@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace CurrencyQuotes.Api.Controllers;
 
-[Route("api/currencry")]
+[Route("api/currency")]
 [ApiController]
 public class CurrencyController : ControllerBase
 {
