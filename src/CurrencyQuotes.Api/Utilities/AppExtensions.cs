@@ -1,4 +1,6 @@
-﻿namespace Microsoft.AspNetCore.Builder;
+﻿using CurrencyQuotes.Utilities.Http;
+
+namespace Microsoft.AspNetCore.Builder;
 
 public static class AppExtensions
 {
@@ -6,6 +8,9 @@ public static class AppExtensions
         this WebApplicationBuilder builder
     )
     {
+        builder.Services.AddHttpClient();
+        builder.Services.AddSingleton<ApiHttpClient>();
+
         builder.Services.AddControllersWithViews()
             .AddJsonOptions(o => o.JsonSerializerOptions.PropertyNamingPolicy = null);
 
