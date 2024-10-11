@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34728.123
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CurrencyQuotes.Api", "src\CurrencyQuotes.Api\CurrencyQuotes.Api.csproj", "{989E3238-1E9A-4BB5-9426-4941A59D7220}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{989E3238-1E9A-4BB5-9426-4941A59D7220}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{989E3238-1E9A-4BB5-9426-4941A59D7220}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{989E3238-1E9A-4BB5-9426-4941A59D7220}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{989E3238-1E9A-4BB5-9426-4941A59D7220}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {30F9D4B0-01EB-4B92-936A-447CDEF299FA}
+	EndGlobalSection
+EndGlobal
