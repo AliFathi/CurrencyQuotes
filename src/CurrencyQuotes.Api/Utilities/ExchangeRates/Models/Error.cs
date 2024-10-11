@@ -5,8 +5,8 @@ namespace CurrencyQuotes.Utilities.ExchangeRates.Models;
 public class Error
 {
     [JsonPropertyName("code")]
-    public int Code { get; set; }
+    public string? Code { get; set; }
 
-    [JsonPropertyName("info")]
-    public string? Info { get; set; }
+    [JsonPropertyName("message")]
+    public string? Message { get; set; }
 }
