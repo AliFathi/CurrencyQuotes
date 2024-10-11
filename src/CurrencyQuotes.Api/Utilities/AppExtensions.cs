@@ -1,4 +1,5 @@
-﻿using CurrencyQuotes.Utilities.Http;
+﻿using CurrencyQuotes.Utilities.ExchangeRates;
+using CurrencyQuotes.Utilities.Http;
 
 namespace Microsoft.AspNetCore.Builder;
 
@@ -10,6 +11,11 @@ public static class AppExtensions
     {
         builder.Services.AddHttpClient();
         builder.Services.AddSingleton<ApiHttpClient>();
+
+        builder.Services.AddSingleton<ExchangeRatesApi>();
+        builder.Services.AddSingleton(
+            builder.Configuration.GetRequiredSection("ExchangeRates").Get<ExchangeRatesOptions>()!
+        );
 
         builder.Services.AddControllersWithViews()
             .AddJsonOptions(o => o.JsonSerializerOptions.PropertyNamingPolicy = null);
