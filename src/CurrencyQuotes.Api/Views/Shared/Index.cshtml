@@ -1,15 +1,73 @@
-﻿<!DOCTYPE html>
+﻿@model IEnumerable<SymbolViewModel>
+<!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>CurrencyQuotes.Api</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>اکالا | نرخ ارز</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.rtl.min.css"
+          integrity="sha384-nU14brUcp6StFntEOOEBvcJm4huWjB0OcIeQ3fltAfSmuZFrkAif0T+UtNGlKKQv"
+          crossorigin="anonymous">
+
+    <style>
+        body {
+            background: radial-gradient(circle at 40% 40%, #4f46e410 25%, transparent 26%), radial-gradient(circle at 60% 60%, #4f46e405 25%, transparent 26%);
+            background-size: 4em 4em;
+            background-color: #ffffff;
+        }
+    </style>
 </head>
 <body>
-    <div class="container">
-        <main role="main" class="pb-3">
-            سلام دنیا
-        </main>
-    </div>
+    <main class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-8 col-lg-4 col-md-5 col-sm-6 bg-body-tertiary rounded py-3">
+                <select id="symbols" class="form-select" style="direction:ltr;" name="symbols" title="نمادها">
+                    <option value="" selected disabled hidden>یکی از نماد‌ها را انتخاب کنید</option>
+                    @foreach (var item in Model)
+                    {
+                        <option value="@item.Symbol" disabled="@item.Disabled">
+                            @item.Symbol <small>( @item.Title)</small>
+                        </option>
+                    }
+                </select>
+
+                <table class="table mt-4">
+                    <thead>
+                        <tr>
+                            <th>نماد</th>
+                            <th>ارزش</th>
+                        </tr>
+                    </thead>
+                    <tbody id="compare-symbols">
+                    </tbody>
+                </table>
+
+                <p id="error" class="text-danger hidden"></p>
+
+                <p>
+                    <small>
+                        <strong>نکته اول:</strong>
+                        ایمیل تایید حساب coinmarketcap برام نمی‌اومد.
+                        فقط از exchangeratesapi استفاده کردم.
+                    </small>
+                </p>
+
+                <p>
+                    <small>
+                        <strong>نکته دوم:</strong>
+                        در تسک ذکر شده نرخ تبدیل بیت‌کوین رو نمایش بدم،
+                        ولی API اون پولیه و پرداخت دلاری میخواست!
+                        نرخ پایه پیش‌فرض یوروست که دریافت نرخ تبدیلش رایگانه.
+                        <strong>
+                            پس فقط میتونید نرخ تبدیل نماد EUR رو ببینید
+                        </strong>
+                    </small>
+                </p>
+            </div>
+        </div>
+    </main>
+    <script src="~/quotes.js"></script>
 </body>
 </html>

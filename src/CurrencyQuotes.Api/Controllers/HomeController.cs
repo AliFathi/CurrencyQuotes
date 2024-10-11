@@ -1,4 +1,5 @@
 using CurrencyQuotes.Api.Models;
+using CurrencyQuotes.Utilities.ExchangeRates;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
@@ -6,9 +7,20 @@ namespace CurrencyQuotes.Api.Controllers
 {
     public class HomeController : Controller
     {
-        public IActionResult Index()
+        public async Task<IActionResult> Index(
+            [FromServices] ExchangeRatesApi api,
+            CancellationToken ct
+        )
         {
-            return View();
+            var symbols = await api.GetSymbolsAsync(ct);
+            var model = symbols.Symbols!.Select(s => new SymbolViewModel
+            {
+                Symbol = s.Key,
+                Title = s.Value,
+                //Disabled = s.Key != "EUR",
+            });
+
+            return View(model);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

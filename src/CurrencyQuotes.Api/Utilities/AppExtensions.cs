@@ -36,6 +36,7 @@ public static class AppExtensions
         app.UseHttpsRedirection();
 
         app.UseRouting();
+        app.UseStaticFiles();
         app.MapControllerRoute(
             name: "default",
             pattern: "{controller=Home}/{action=Index}/{id?}");

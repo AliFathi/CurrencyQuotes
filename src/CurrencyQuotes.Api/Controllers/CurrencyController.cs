@@ -25,6 +25,7 @@ public class CurrencyController : ControllerBase
         CancellationToken ct
     )
     {
+        // دریافت همه نمادها برای بررسی ورودی کاربر
         var validSymbols = (await api.GetSymbolsAsync(ct))
             .Symbols!.Select(s => s.Key);
 
@@ -37,7 +38,7 @@ public class CurrencyController : ControllerBase
 
         compareSymbols = compareSymbols.Where(s => s != string.Empty).ToArray();
         if (compareSymbols.Length > 5)
-            return BadRequest();
+            return BadRequest($"5 symbol are supported.");
 
         foreach (var symbol in compareSymbols)
         {
